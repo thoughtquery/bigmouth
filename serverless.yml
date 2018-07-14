@@ -1,0 +1,22 @@
+service: big-mouth
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  get-index:
+    handler: functions/get-index.handler
+    events:
+      - http:
+          path: /
+          method: get
+  
+  get-restaurants: 
+    handler: functions/get-restaurants.handler
+    events: 
+      - http:
+          path: /restaurants/
+          method: get
+    environment: 
+      restaurants_table: restaurants
